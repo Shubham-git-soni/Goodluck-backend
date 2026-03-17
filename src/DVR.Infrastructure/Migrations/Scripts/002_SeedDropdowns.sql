@@ -220,3 +220,13 @@ SELECT * FROM (VALUES
 WHERE NOT EXISTS (
     SELECT 1 FROM Dropdowns WHERE Category = v.Category AND Value = v.Value AND IsActive = 1
 );
+
+-- Publishers
+INSERT INTO Dropdowns (Category, Value, Label, SortOrder)
+SELECT * FROM (VALUES
+    ('Publisher', 'GoodluckPublications',  'Goodluck Publications',   1),
+    ('Publisher', 'VidhyarthiPrakashan',   'Vidhyarthi Prakashan',    2)
+) AS v(Category, Value, Label, SortOrder)
+WHERE NOT EXISTS (
+    SELECT 1 FROM Dropdowns WHERE Category = v.Category AND Value = v.Value AND IsActive = 1
+);

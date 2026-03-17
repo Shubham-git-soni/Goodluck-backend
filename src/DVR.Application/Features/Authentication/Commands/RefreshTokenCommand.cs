@@ -44,7 +44,7 @@ public class RefreshTokenCommandHandler : IRequestHandler<RefreshTokenCommand, A
         {
             AccessToken = accessToken,
             RefreshToken = newRefreshToken,
-            AccessTokenExpiry = DateTime.UtcNow.AddMinutes(30),
+            AccessTokenExpiry = DateTime.UtcNow.AddHours(8),
             User = new UserInfo
             {
                 UserId = user.UserId,

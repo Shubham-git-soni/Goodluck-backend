@@ -57,9 +57,9 @@ public class BooksController : ControllerBase
     {
         using var conn = _db.CreateConnection();
         var id = await conn.QueryFirstOrDefaultAsync<int>(@"
-            INSERT INTO Books (Title, Author, Subject, Class, Series, ISBN, Publisher, Price, IsActive, CreatedAt, UpdatedAt)
+            INSERT INTO Books (Title, Author, Subject, Class, Board, ISBN, Publisher, MRP, SellingPrice, SpecimenPrice, IsActive, CreatedAt, UpdatedAt)
             OUTPUT INSERTED.BookId
-            VALUES (@Title, @Author, @Subject, @Class, @Series, @ISBN, @Publisher, @Price, 1, GETUTCDATE(), GETUTCDATE())",
+            VALUES (@Title, @Author, @Subject, @Class, @Board, @ISBN, @Publisher, @MRP, @SellingPrice, @SpecimenPrice, 1, GETUTCDATE(), GETUTCDATE())",
             request);
         return Created($"/api/books/{id}", ApiResponse<object>.Ok(new { BookId = id }, "Book created."));
     }
@@ -71,10 +71,11 @@ public class BooksController : ControllerBase
         using var conn = _db.CreateConnection();
         var rows = await conn.ExecuteAsync(@"
             UPDATE Books SET Title = @Title, Author = @Author, Subject = @Subject,
-                Class = @Class, Series = @Series, ISBN = @ISBN, Publisher = @Publisher,
-                Price = @Price, UpdatedAt = GETUTCDATE()
+                Class = @Class, Board = @Board, ISBN = @ISBN, Publisher = @Publisher,
+                MRP = @MRP, SellingPrice = @SellingPrice, SpecimenPrice = @SpecimenPrice,
+                UpdatedAt = GETUTCDATE()
             WHERE BookId = @id",
-            new { request.Title, request.Author, request.Subject, request.Class, request.Series, request.ISBN, request.Publisher, request.Price, id });
+            new { request.Title, request.Author, request.Subject, request.Class, request.Board, request.ISBN, request.Publisher, request.MRP, request.SellingPrice, request.SpecimenPrice, id });
 
         return rows > 0 ? Ok(ApiResponse.Ok("Book updated.")) : NotFound(ApiResponse.Fail("Book not found."));
     }
@@ -95,8 +96,10 @@ public class CreateBookRequest
     public string? Author { get; set; }
     public string? Subject { get; set; }
     public string? Class { get; set; }
-    public string? Series { get; set; }
+    public string? Board { get; set; }
     public string? ISBN { get; set; }
     public string? Publisher { get; set; }
-    public decimal? Price { get; set; }
+    public decimal? MRP { get; set; }
+    public decimal? SellingPrice { get; set; }
+    public decimal? SpecimenPrice { get; set; }
 }
