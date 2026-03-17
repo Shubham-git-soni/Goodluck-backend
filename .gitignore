@@ -1,2 +1,5 @@
 goodluck-backend\src\DVR.API\bin
 goodluck-frontend-master/ 
+bin/
+obj/
+logs/
