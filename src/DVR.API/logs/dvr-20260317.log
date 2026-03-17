@@ -175,3 +175,30 @@
 2026-03-17 10:42:31.567 +05:30 [INF] Server desktop-dn1p5p3:32724:16c9a9b1 All dispatchers stopped
 2026-03-17 10:42:31.580 +05:30 [INF] Server desktop-dn1p5p3:32724:16c9a9b1 successfully reported itself as stopped in 6.4942 ms
 2026-03-17 10:42:31.581 +05:30 [INF] Server desktop-dn1p5p3:32724:16c9a9b1 has been stopped in total 26.9781 ms
+2026-03-17 10:42:40.158 +05:30 [INF] Start installing Hangfire SQL objects...
+2026-03-17 10:42:40.537 +05:30 [INF] Hangfire SQL objects installed.
+2026-03-17 10:42:41.231 +05:30 [INF] Starting Hangfire Server using job storage: 'SQL Server: DESKTOP-DN1P5P3\SQLEXPRESS01@GoodLuckDVR'
+2026-03-17 10:42:41.232 +05:30 [INF] Using the following options for SQL Server job storage: Queue poll interval: 00:00:00.
+2026-03-17 10:42:41.234 +05:30 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2026-03-17 10:42:41.280 +05:30 [INF] Server desktop-dn1p5p3:28024:685fdc2b successfully announced in 23.4174 ms
+2026-03-17 10:42:41.286 +05:30 [INF] Server desktop-dn1p5p3:28024:685fdc2b is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, SqlServerHeartbeatProcess, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2026-03-17 10:42:41.298 +05:30 [INF] Server desktop-dn1p5p3:28024:685fdc2b all the dispatchers started
+2026-03-17 10:42:58.399 +05:30 [INF] [34282db8] OPTIONS /api/notifications started
+2026-03-17 10:42:58.399 +05:30 [INF] [026e9bbb] OPTIONS /api/approvals/pending started
+2026-03-17 10:42:58.439 +05:30 [WRN] Failed to determine the https port for redirect.
+2026-03-17 10:42:58.444 +05:30 [INF] [026e9bbb] OPTIONS /api/approvals/pending responded 204 in 51ms
+2026-03-17 10:42:58.444 +05:30 [INF] [34282db8] OPTIONS /api/notifications responded 204 in 51ms
+2026-03-17 10:42:58.467 +05:30 [INF] [d18fa222] GET /api/notifications started
+2026-03-17 10:42:58.467 +05:30 [INF] [227cd8bc] GET /api/approvals/pending started
+2026-03-17 10:42:58.768 +05:30 [INF] [227cd8bc] GET /api/approvals/pending responded 200 in 300ms
+2026-03-17 10:42:58.768 +05:30 [INF] [d18fa222] GET /api/notifications responded 200 in 300ms
+2026-03-17 10:43:46.474 +05:30 [INF] [cce9678a] OPTIONS /api/auth/login started
+2026-03-17 10:43:46.476 +05:30 [INF] [cce9678a] OPTIONS /api/auth/login responded 204 in 2ms
+2026-03-17 10:43:48.212 +05:30 [INF] [9ca9bce3] OPTIONS /api/auth/login started
+2026-03-17 10:43:48.214 +05:30 [INF] [9ca9bce3] OPTIONS /api/auth/login responded 204 in 2ms
+2026-03-17 10:44:49.449 +05:30 [INF] [cf9e8a8a] OPTIONS /api/auth/login started
+2026-03-17 10:44:49.452 +05:30 [INF] [cf9e8a8a] OPTIONS /api/auth/login responded 204 in 3ms
