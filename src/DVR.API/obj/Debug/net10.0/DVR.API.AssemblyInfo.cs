@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DVR.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+22b1d87e550292139d5409ee05efe9c78ffaca9a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c781a3491e7f68a96b074146d50cf0ea75074ea6")]
 [assembly: System.Reflection.AssemblyProductAttribute("DVR.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DVR.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

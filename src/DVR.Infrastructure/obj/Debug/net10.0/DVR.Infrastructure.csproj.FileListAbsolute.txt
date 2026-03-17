@@ -16,3 +16,21 @@ D:\goodluck-frontend-master\goodluck-backend\src\DVR.Infrastructure\obj\Debug\ne
 D:\goodluck-frontend-master\goodluck-backend\src\DVR.Infrastructure\obj\Debug\net10.0\refint\DVR.Infrastructure.dll
 D:\goodluck-frontend-master\goodluck-backend\src\DVR.Infrastructure\obj\Debug\net10.0\DVR.Infrastructure.pdb
 D:\goodluck-frontend-master\goodluck-backend\src\DVR.Infrastructure\obj\Debug\net10.0\ref\DVR.Infrastructure.dll
+D:\GoodLuck DVR\Goodluck-backend\src\DVR.Infrastructure\bin\Debug\net10.0\DVR.Infrastructure.deps.json
+D:\GoodLuck DVR\Goodluck-backend\src\DVR.Infrastructure\bin\Debug\net10.0\DVR.Infrastructure.dll
+D:\GoodLuck DVR\Goodluck-backend\src\DVR.Infrastructure\bin\Debug\net10.0\DVR.Infrastructure.pdb
+D:\GoodLuck DVR\Goodluck-backend\src\DVR.Infrastructure\bin\Debug\net10.0\DVR.Application.dll
+D:\GoodLuck DVR\Goodluck-backend\src\DVR.Infrastructure\bin\Debug\net10.0\DVR.Domain.dll
+D:\GoodLuck DVR\Goodluck-backend\src\DVR.Infrastructure\bin\Debug\net10.0\DVR.Application.pdb
+D:\GoodLuck DVR\Goodluck-backend\src\DVR.Infrastructure\bin\Debug\net10.0\DVR.Domain.pdb
+D:\GoodLuck DVR\Goodluck-backend\src\DVR.Infrastructure\obj\Debug\net10.0\DVR.Infrastructure.csproj.AssemblyReference.cache
+D:\GoodLuck DVR\Goodluck-backend\src\DVR.Infrastructure\obj\Debug\net10.0\DVR.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+D:\GoodLuck DVR\Goodluck-backend\src\DVR.Infrastructure\obj\Debug\net10.0\DVR.Infrastructure.AssemblyInfoInputs.cache
+D:\GoodLuck DVR\Goodluck-backend\src\DVR.Infrastructure\obj\Debug\net10.0\DVR.Infrastructure.AssemblyInfo.cs
+D:\GoodLuck DVR\Goodluck-backend\src\DVR.Infrastructure\obj\Debug\net10.0\DVR.Infrastructure.csproj.CoreCompileInputs.cache
+D:\GoodLuck DVR\Goodluck-backend\src\DVR.Infrastructure\obj\Debug\net10.0\DVR.Infrastructure.sourcelink.json
+D:\GoodLuck DVR\Goodluck-backend\src\DVR.Infrastructure\obj\Debug\net10.0\DVR.Infr.DE9187C9.Up2Date
+D:\GoodLuck DVR\Goodluck-backend\src\DVR.Infrastructure\obj\Debug\net10.0\DVR.Infrastructure.dll
+D:\GoodLuck DVR\Goodluck-backend\src\DVR.Infrastructure\obj\Debug\net10.0\refint\DVR.Infrastructure.dll
+D:\GoodLuck DVR\Goodluck-backend\src\DVR.Infrastructure\obj\Debug\net10.0\DVR.Infrastructure.pdb
+D:\GoodLuck DVR\Goodluck-backend\src\DVR.Infrastructure\obj\Debug\net10.0\ref\DVR.Infrastructure.dll

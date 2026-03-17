@@ -10,3 +10,15 @@ D:\goodluck-frontend-master\goodluck-backend\src\DVR.Domain\obj\Debug\net10.0\DV
 D:\goodluck-frontend-master\goodluck-backend\src\DVR.Domain\obj\Debug\net10.0\refint\DVR.Domain.dll
 D:\goodluck-frontend-master\goodluck-backend\src\DVR.Domain\obj\Debug\net10.0\DVR.Domain.pdb
 D:\goodluck-frontend-master\goodluck-backend\src\DVR.Domain\obj\Debug\net10.0\ref\DVR.Domain.dll
+D:\GoodLuck DVR\Goodluck-backend\src\DVR.Domain\bin\Debug\net10.0\DVR.Domain.deps.json
+D:\GoodLuck DVR\Goodluck-backend\src\DVR.Domain\bin\Debug\net10.0\DVR.Domain.dll
+D:\GoodLuck DVR\Goodluck-backend\src\DVR.Domain\bin\Debug\net10.0\DVR.Domain.pdb
+D:\GoodLuck DVR\Goodluck-backend\src\DVR.Domain\obj\Debug\net10.0\DVR.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\GoodLuck DVR\Goodluck-backend\src\DVR.Domain\obj\Debug\net10.0\DVR.Domain.AssemblyInfoInputs.cache
+D:\GoodLuck DVR\Goodluck-backend\src\DVR.Domain\obj\Debug\net10.0\DVR.Domain.AssemblyInfo.cs
+D:\GoodLuck DVR\Goodluck-backend\src\DVR.Domain\obj\Debug\net10.0\DVR.Domain.csproj.CoreCompileInputs.cache
+D:\GoodLuck DVR\Goodluck-backend\src\DVR.Domain\obj\Debug\net10.0\DVR.Domain.sourcelink.json
+D:\GoodLuck DVR\Goodluck-backend\src\DVR.Domain\obj\Debug\net10.0\DVR.Domain.dll
+D:\GoodLuck DVR\Goodluck-backend\src\DVR.Domain\obj\Debug\net10.0\refint\DVR.Domain.dll
+D:\GoodLuck DVR\Goodluck-backend\src\DVR.Domain\obj\Debug\net10.0\DVR.Domain.pdb
+D:\GoodLuck DVR\Goodluck-backend\src\DVR.Domain\obj\Debug\net10.0\ref\DVR.Domain.dll

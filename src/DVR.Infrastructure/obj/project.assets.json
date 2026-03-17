@@ -1708,23 +1708,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Hp\\.nuget\\packages\\": {},
+    "C:\\Users\\dell\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\goodluck-frontend-master\\goodluck-backend\\src\\DVR.Infrastructure\\DVR.Infrastructure.csproj",
+      "projectUniqueName": "D:\\GoodLuck DVR\\Goodluck-backend\\src\\DVR.Infrastructure\\DVR.Infrastructure.csproj",
       "projectName": "DVR.Infrastructure",
-      "projectPath": "D:\\goodluck-frontend-master\\goodluck-backend\\src\\DVR.Infrastructure\\DVR.Infrastructure.csproj",
-      "packagesPath": "C:\\Users\\Hp\\.nuget\\packages\\",
-      "outputPath": "D:\\goodluck-frontend-master\\goodluck-backend\\src\\DVR.Infrastructure\\obj\\",
+      "projectPath": "D:\\GoodLuck DVR\\Goodluck-backend\\src\\DVR.Infrastructure\\DVR.Infrastructure.csproj",
+      "packagesPath": "C:\\Users\\dell\\.nuget\\packages\\",
+      "outputPath": "D:\\GoodLuck DVR\\Goodluck-backend\\src\\DVR.Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Hp\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\dell\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -1740,8 +1740,8 @@
         "net10.0": {
           "targetAlias": "net10.0",
           "projectReferences": {
-            "D:\\goodluck-frontend-master\\goodluck-backend\\src\\DVR.Application\\DVR.Application.csproj": {
-              "projectPath": "D:\\goodluck-frontend-master\\goodluck-backend\\src\\DVR.Application\\DVR.Application.csproj"
+            "D:\\GoodLuck DVR\\Goodluck-backend\\src\\DVR.Application\\DVR.Application.csproj": {
+              "projectPath": "D:\\GoodLuck DVR\\Goodluck-backend\\src\\DVR.Application\\DVR.Application.csproj"
             }
           }
         }
@@ -1811,7 +1811,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.104/PortableRuntimeIdentifierGraph.json",
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.100/PortableRuntimeIdentifierGraph.json",
         "packagesToPrune": {
           "Microsoft.CSharp": "(,4.7.32767]",
           "Microsoft.VisualBasic": "(,10.4.32767]",
