@@ -1,0 +1,1285 @@
+{
+  "info": {
+    "name": "GoodLuck DVR API",
+    "description": "Complete API collection for GoodLuck DVR Backend. Base URL: http://localhost:5000. Login first to get accessToken, then set it in the collection variable.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:5000" },
+    { "key": "token", "value": "" }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [{ "key": "token", "value": "{{token}}", "type": "string" }]
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Login",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "var json = pm.response.json();",
+                  "if (json.data && json.data.accessToken) {",
+                  "  pm.collectionVariables.set('token', json.data.accessToken);",
+                  "  console.log('Token saved!');",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/api/auth/login",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"admin@goodluck.com\",\n  \"password\": \"Admin@123\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Refresh Token",
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/api/auth/refresh",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"refreshToken\": \"your-refresh-token-here\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Me (Get Current User)",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/auth/me"
+          }
+        },
+        {
+          "name": "Logout",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/auth/logout"
+          }
+        },
+        {
+          "name": "Change Password",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/api/auth/change-password",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"currentPassword\": \"Admin@123\",\n  \"newPassword\": \"NewPass@123\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Forgot Password",
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/api/auth/forgot-password",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"admin@goodluck.com\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Register Device",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/api/auth/register-device",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"deviceToken\": \"fcm-device-token-here\"\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Users",
+      "item": [
+        {
+          "name": "Get All Users",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/users?page=1&pageSize=10&search=&role=",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "users"],
+              "query": [
+                { "key": "page", "value": "1" },
+                { "key": "pageSize", "value": "10" },
+                { "key": "search", "value": "" },
+                { "key": "role", "value": "" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get User By ID",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/users/1"
+          }
+        },
+        {
+          "name": "Create User",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/api/users",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"salesman1\",\n  \"email\": \"salesman1@goodluck.com\",\n  \"password\": \"Salesman@123\",\n  \"fullName\": \"Rahul Sharma\",\n  \"phone\": \"9876543210\",\n  \"role\": 3,\n  \"managerId\": null\n}"
+            }
+          }
+        },
+        {
+          "name": "Update User",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/api/users/1",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fullName\": \"Admin User\",\n  \"phone\": \"9999999999\",\n  \"isActive\": true\n}"
+            }
+          }
+        },
+        {
+          "name": "Delete User",
+          "request": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/users/1"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Salesmen",
+      "item": [
+        {
+          "name": "Get All Salesmen",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/salesmen?page=1&pageSize=10&search=",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "salesmen"],
+              "query": [
+                { "key": "page", "value": "1" },
+                { "key": "pageSize", "value": "10" },
+                { "key": "search", "value": "" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Salesman By ID",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/salesmen/1"
+          }
+        },
+        {
+          "name": "Create Salesman",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/api/salesmen",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": 2,\n  \"region\": \"North\",\n  \"state\": \"Delhi\",\n  \"cities\": [\"Delhi\", \"Noida\"],\n  \"specimenBudget\": 50000,\n  \"salesTarget\": 500000,\n  \"managerId\": null\n}"
+            }
+          }
+        },
+        {
+          "name": "Update Salesman",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/api/salesmen/1",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"region\": \"North\",\n  \"state\": \"Delhi\",\n  \"cities\": [\"Delhi\", \"Noida\", \"Gurgaon\"],\n  \"specimenBudget\": 60000,\n  \"salesTarget\": 600000\n}"
+            }
+          }
+        },
+        {
+          "name": "Get Salesman Performance",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/salesmen/1/performance?month=3&year=2026",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "salesmen", "1", "performance"],
+              "query": [
+                { "key": "month", "value": "3" },
+                { "key": "year", "value": "2026" }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Schools",
+      "item": [
+        {
+          "name": "Get All Schools",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/schools?page=1&pageSize=10&search=&city=&state=",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "schools"],
+              "query": [
+                { "key": "page", "value": "1" },
+                { "key": "pageSize", "value": "10" },
+                { "key": "search", "value": "" },
+                { "key": "city", "value": "" },
+                { "key": "state", "value": "" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get My Schools",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/schools/my-schools"
+          }
+        },
+        {
+          "name": "Get School By ID",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/schools/1"
+          }
+        },
+        {
+          "name": "Create School",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/api/schools",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Delhi Public School\",\n  \"address\": \"Sector 45, Noida\",\n  \"city\": \"Noida\",\n  \"state\": \"Uttar Pradesh\",\n  \"board\": \"CBSE\",\n  \"phone\": \"9876543210\",\n  \"email\": \"dps@school.com\",\n  \"primaryStrength\": 500,\n  \"secondaryStrength\": 400,\n  \"seniorSecondaryStrength\": 300,\n  \"assignedToSalesmanId\": 1\n}"
+            }
+          }
+        },
+        {
+          "name": "Update School",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/api/schools/1",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Delhi Public School\",\n  \"address\": \"Sector 45, Noida\",\n  \"city\": \"Noida\",\n  \"state\": \"Uttar Pradesh\",\n  \"board\": \"CBSE\",\n  \"phone\": \"9876543210\",\n  \"email\": \"dps@school.com\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Delete School",
+          "request": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/schools/1"
+          }
+        },
+        {
+          "name": "Add School Contact",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/api/schools/1/contacts",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Rajesh Kumar\",\n  \"designation\": \"Principal\",\n  \"phone\": \"9876543210\",\n  \"email\": \"principal@dps.com\",\n  \"isPrimary\": true\n}"
+            }
+          }
+        },
+        {
+          "name": "Get Prescribed Books",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/schools/1/prescribed-books"
+          }
+        },
+        {
+          "name": "Update Prescribed Books",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/api/schools/1/prescribed-books",
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"bookId\": 1,\n    \"class\": \"10\",\n    \"subject\": \"Mathematics\",\n    \"status\": \"Prescribed\"\n  }\n]"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Book Sellers",
+      "item": [
+        {
+          "name": "Get All BookSellers",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/booksellers?page=1&pageSize=10&search=&city=&state=",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "booksellers"],
+              "query": [
+                { "key": "page", "value": "1" },
+                { "key": "pageSize", "value": "10" },
+                { "key": "search", "value": "" },
+                { "key": "city", "value": "" },
+                { "key": "state", "value": "" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get My BookSellers",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/booksellers/my-booksellers"
+          }
+        },
+        {
+          "name": "Get BookSeller By ID",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/booksellers/1"
+          }
+        },
+        {
+          "name": "Create BookSeller",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/api/booksellers",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"shopName\": \"Sharma Book Store\",\n  \"ownerName\": \"Ramesh Sharma\",\n  \"city\": \"Delhi\",\n  \"state\": \"Delhi\",\n  \"address\": \"Karol Bagh, Delhi\",\n  \"phone\": \"9876543210\",\n  \"email\": \"sharma@books.com\",\n  \"gstNumber\": \"07AABCU9603R1ZX\",\n  \"creditLimit\": 100000,\n  \"assignedToSalesmanId\": 1\n}"
+            }
+          }
+        },
+        {
+          "name": "Update BookSeller",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/api/booksellers/1",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"shopName\": \"Sharma Book Store\",\n  \"ownerName\": \"Ramesh Sharma\",\n  \"city\": \"Delhi\",\n  \"phone\": \"9876543210\",\n  \"creditLimit\": 150000\n}"
+            }
+          }
+        },
+        {
+          "name": "Delete BookSeller",
+          "request": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/booksellers/1"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Visits",
+      "item": [
+        {
+          "name": "Get All Visits",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/visits?page=1&pageSize=10&type=&salesmanId=&fromDate=&toDate=",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "visits"],
+              "query": [
+                { "key": "page", "value": "1" },
+                { "key": "pageSize", "value": "10" },
+                { "key": "type", "value": "" },
+                { "key": "salesmanId", "value": "" },
+                { "key": "fromDate", "value": "" },
+                { "key": "toDate", "value": "" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Visit By ID",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/visits/1"
+          }
+        },
+        {
+          "name": "Create School Visit",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/api/visits/school",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"schoolId\": 1,\n  \"visitDate\": \"2026-03-14\",\n  \"supplyThrough\": \"Direct\",\n  \"contactPersonIds\": [1],\n  \"purposes\": [\"Book Promotion\", \"Follow Up\"],\n  \"jointWorking\": {\n    \"isJointWorking\": false,\n    \"personId\": null,\n    \"personType\": null,\n    \"managerType\": null,\n    \"notes\": \"\"\n  },\n  \"specimensGiven\": [\n    {\n      \"bookId\": 1,\n      \"quantity\": 2,\n      \"mrp\": 250,\n      \"cost\": 50\n    }\n  ],\n  \"specimensReturned\": [],\n  \"feedbackCategory\": \"Positive\",\n  \"feedbackComments\": \"School interested in new series\",\n  \"paymentCollected\": 0,\n  \"nextVisitDate\": \"2026-04-01\",\n  \"nextVisitPurpose\": \"Order Collection\",\n  \"notes\": \"Meeting went well\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Create Bookseller Visit",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/api/visits/bookseller",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"bookSellerId\": 1,\n  \"visitDate\": \"2026-03-14\",\n  \"purposes\": [\"Payment Collection\", \"Order Follow Up\"],\n  \"paymentCollected\": 5000,\n  \"feedbackCategory\": \"Neutral\",\n  \"feedbackComments\": \"Payment pending, follow up next week\",\n  \"nextVisitDate\": \"2026-03-21\",\n  \"notes\": \"Collected partial payment\"\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Attendance",
+      "item": [
+        {
+          "name": "Check In",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/api/attendance/check-in",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"city\": \"Delhi\",\n  \"latitude\": 28.6139,\n  \"longitude\": 77.2090,\n  \"address\": \"Connaught Place, New Delhi\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Check Out",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/api/attendance/check-out",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"city\": \"Delhi\",\n  \"latitude\": 28.5355,\n  \"longitude\": 77.3910,\n  \"address\": \"Noida Sector 18\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Get My Attendance",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/attendance/my-attendance?month=3&year=2026",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "attendance", "my-attendance"],
+              "query": [
+                { "key": "month", "value": "3" },
+                { "key": "year", "value": "2026" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Attendance Report (Admin)",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/attendance/report?month=3&year=2026&salesmanId=",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "attendance", "report"],
+              "query": [
+                { "key": "month", "value": "3" },
+                { "key": "year", "value": "2026" },
+                { "key": "salesmanId", "value": "" }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Tour Plans",
+      "item": [
+        {
+          "name": "Get All Tour Plans",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/tour-plans?page=1&pageSize=10&status=&salesmanId=",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "tour-plans"],
+              "query": [
+                { "key": "page", "value": "1" },
+                { "key": "pageSize", "value": "10" },
+                { "key": "status", "value": "" },
+                { "key": "salesmanId", "value": "" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Tour Plan By ID",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/tour-plans/1"
+          }
+        },
+        {
+          "name": "Create Tour Plan",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/api/tour-plans",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"weekStartDate\": \"2026-03-16\",\n  \"weekEndDate\": \"2026-03-22\",\n  \"plans\": [\n    {\n      \"date\": \"2026-03-16\",\n      \"visits\": [\n        {\n          \"type\": \"school\",\n          \"entityId\": 1,\n          \"entityName\": \"Delhi Public School\",\n          \"plannedTime\": \"10:00\",\n          \"purpose\": \"Book Promotion\"\n        }\n      ]\n    }\n  ]\n}"
+            }
+          }
+        },
+        {
+          "name": "Submit Tour Plan",
+          "request": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/tour-plans/1/submit"
+          }
+        },
+        {
+          "name": "Approve Tour Plan",
+          "request": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/tour-plans/1/approve"
+          }
+        },
+        {
+          "name": "Reject Tour Plan",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/api/tour-plans/1/reject",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"comments\": \"Please revise the plan for Monday\"\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Expenses",
+      "item": [
+        {
+          "name": "Get All Expenses",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/expenses?page=1&pageSize=10&status=&salesmanId=",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "expenses"],
+              "query": [
+                { "key": "page", "value": "1" },
+                { "key": "pageSize", "value": "10" },
+                { "key": "status", "value": "" },
+                { "key": "salesmanId", "value": "" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Expense By ID",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/expenses/1"
+          }
+        },
+        {
+          "name": "Create Expense",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/api/expenses",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"date\": \"2026-03-14\",\n  \"type\": \"Travel\",\n  \"category\": \"Auto\",\n  \"amount\": 250,\n  \"description\": \"Auto from station to school\",\n  \"receiptUrl\": null\n}"
+            }
+          }
+        },
+        {
+          "name": "Approve Expense",
+          "request": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/expenses/1/approve"
+          }
+        },
+        {
+          "name": "Reject Expense",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/api/expenses/1/reject",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"comments\": \"Receipt missing\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Delete Expense",
+          "request": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/expenses/1"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Expense Reports",
+      "item": [
+        {
+          "name": "Get All Expense Reports",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/expense-reports?page=1&pageSize=10&status=&salesmanId=",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "expense-reports"],
+              "query": [
+                { "key": "page", "value": "1" },
+                { "key": "pageSize", "value": "10" },
+                { "key": "status", "value": "" },
+                { "key": "salesmanId", "value": "" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Create Expense Report",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/api/expense-reports",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"startDate\": \"2026-03-01\",\n  \"endDate\": \"2026-03-15\",\n  \"expenseIds\": [1, 2, 3]\n}"
+            }
+          }
+        },
+        {
+          "name": "Submit Expense Report",
+          "request": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/expense-reports/1/submit"
+          }
+        },
+        {
+          "name": "Approve Expense Report",
+          "request": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/expense-reports/1/approve"
+          }
+        }
+      ]
+    },
+    {
+      "name": "TA/DA",
+      "item": [
+        {
+          "name": "Get All TADA Claims",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/tada?page=1&pageSize=10&status=&salesmanId=",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "tada"],
+              "query": [
+                { "key": "page", "value": "1" },
+                { "key": "pageSize", "value": "10" },
+                { "key": "status", "value": "" },
+                { "key": "salesmanId", "value": "" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get TADA By ID",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/tada/1"
+          }
+        },
+        {
+          "name": "Create TADA Claim",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/api/tada",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"date\": \"2026-03-14\",\n  \"city\": \"Delhi\",\n  \"travelMode\": \"Train\",\n  \"distance\": 45,\n  \"amount\": 350,\n  \"visitId\": 1,\n  \"attachment\": null\n}"
+            }
+          }
+        },
+        {
+          "name": "Submit TADA Claim",
+          "request": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/tada/1/submit"
+          }
+        },
+        {
+          "name": "Approve TADA Claim",
+          "request": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/tada/1/approve"
+          }
+        },
+        {
+          "name": "Reject TADA Claim",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/api/tada/1/reject",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"comments\": \"Invalid travel mode selected\"\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Books",
+      "item": [
+        {
+          "name": "Get All Books",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/books?page=1&pageSize=10&search=&subject=&series=",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "books"],
+              "query": [
+                { "key": "page", "value": "1" },
+                { "key": "pageSize", "value": "10" },
+                { "key": "search", "value": "" },
+                { "key": "subject", "value": "" },
+                { "key": "series", "value": "" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Book By ID",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/books/1"
+          }
+        },
+        {
+          "name": "Create Book",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/api/books",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Mathematics Class 10\",\n  \"class\": \"10\",\n  \"subject\": \"Mathematics\",\n  \"board\": \"CBSE\",\n  \"author\": \"R.D. Sharma\",\n  \"publisher\": \"GoodLuck Publications\",\n  \"mrp\": 350,\n  \"sellingPrice\": 315,\n  \"specimenPrice\": 70,\n  \"isbn\": \"978-81-XXXXX-XX-X\",\n  \"edition\": \"2026\",\n  \"stockAvailable\": 500\n}"
+            }
+          }
+        },
+        {
+          "name": "Update Book",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/api/books/1",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"mrp\": 375,\n  \"sellingPrice\": 337,\n  \"stockAvailable\": 450\n}"
+            }
+          }
+        },
+        {
+          "name": "Delete Book",
+          "request": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/books/1"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Specimens",
+      "item": [
+        {
+          "name": "Get All Specimens",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/specimens?page=1&pageSize=10&status=&salesmanId=&bookId=",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "specimens"],
+              "query": [
+                { "key": "page", "value": "1" },
+                { "key": "pageSize", "value": "10" },
+                { "key": "status", "value": "" },
+                { "key": "salesmanId", "value": "" },
+                { "key": "bookId", "value": "" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Specimen By ID",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/specimens/1"
+          }
+        },
+        {
+          "name": "Create Specimen",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/api/specimens",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"bookId\": 1,\n  \"stockAvailable\": 100\n}"
+            }
+          }
+        },
+        {
+          "name": "Allocate Specimen",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/api/specimens/1/allocate",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"salesmanId\": 1,\n  \"quantity\": 10\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Approvals",
+      "item": [
+        {
+          "name": "Get Pending Approvals",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/approvals/pending"
+          }
+        },
+        {
+          "name": "Approve Item",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/api/approvals/1/approve",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"comments\": \"Approved\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Reject Item",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/api/approvals/1/reject",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"comments\": \"Not justified\"\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Notifications",
+      "item": [
+        {
+          "name": "Get Notifications",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/notifications?page=1&pageSize=10&unreadOnly=false",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "notifications"],
+              "query": [
+                { "key": "page", "value": "1" },
+                { "key": "pageSize", "value": "10" },
+                { "key": "unreadOnly", "value": "false" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Mark As Read",
+          "request": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/notifications/1/read"
+          }
+        },
+        {
+          "name": "Mark All As Read",
+          "request": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/notifications/mark-all-read"
+          }
+        },
+        {
+          "name": "Delete Notification",
+          "request": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/notifications/1"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Dashboard",
+      "item": [
+        {
+          "name": "Admin Dashboard",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/dashboard/admin"
+          }
+        },
+        {
+          "name": "Salesman Dashboard",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/dashboard/salesman"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Reports",
+      "item": [
+        {
+          "name": "Attendance Report",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/reports/attendance?month=3&year=2026&salesmanId=",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "reports", "attendance"],
+              "query": [
+                { "key": "month", "value": "3" },
+                { "key": "year", "value": "2026" },
+                { "key": "salesmanId", "value": "" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Visits Report",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/reports/visits?month=3&year=2026&salesmanId=",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "reports", "visits"],
+              "query": [
+                { "key": "month", "value": "3" },
+                { "key": "year", "value": "2026" },
+                { "key": "salesmanId", "value": "" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Year Comparison Report",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/reports/year-comparison?year=2026",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "reports", "year-comparison"],
+              "query": [{ "key": "year", "value": "2026" }]
+            }
+          }
+        },
+        {
+          "name": "School Analytics",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/reports/school-analytics?state=&city=",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "reports", "school-analytics"],
+              "query": [
+                { "key": "state", "value": "" },
+                { "key": "city", "value": "" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Prescribed Books Report",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/reports/prescribed-books"
+          }
+        },
+        {
+          "name": "Specimen Tracking Report",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/reports/specimen-tracking"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Feedback",
+      "item": [
+        {
+          "name": "Get All Feedback",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/feedback?page=1&pageSize=10&status=&salesmanId=",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "feedback"],
+              "query": [
+                { "key": "page", "value": "1" },
+                { "key": "pageSize", "value": "10" },
+                { "key": "status", "value": "" },
+                { "key": "salesmanId", "value": "" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Feedback By ID",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/feedback/1"
+          }
+        },
+        {
+          "name": "Resolve Feedback",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/api/feedback/1/resolve",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"resolution\": \"Issue has been addressed and resolved\"\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Locations",
+      "item": [
+        {
+          "name": "Get States",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/locations/states"
+          }
+        },
+        {
+          "name": "Get Cities",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/locations/cities?stateId=1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "locations", "cities"],
+              "query": [{ "key": "stateId", "value": "1" }]
+            }
+          }
+        },
+        {
+          "name": "Get Stations",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/locations/stations?cityId=1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "locations", "stations"],
+              "query": [{ "key": "cityId", "value": "1" }]
+            }
+          }
+        },
+        {
+          "name": "Create State",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/api/locations/states",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Delhi\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Create City",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/api/locations/cities",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"New Delhi\",\n  \"stateId\": 1\n}"
+            }
+          }
+        },
+        {
+          "name": "Create Station",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/api/locations/stations",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Connaught Place\",\n  \"cityId\": 1\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Dropdowns",
+      "item": [
+        {
+          "name": "Get All Dropdowns",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/dropdowns"
+          }
+        },
+        {
+          "name": "Get Dropdown By Category",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/dropdowns/visitPurposes"
+          }
+        },
+        {
+          "name": "Create Dropdown",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/api/dropdowns",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"category\": \"visitPurposes\",\n  \"value\": \"Product Demo\",\n  \"displayOrder\": 10\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "PM Schedules",
+      "item": [
+        {
+          "name": "Get All PM Schedules",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/pm-schedules?page=1&pageSize=10&status=&salesmanId=",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "pm-schedules"],
+              "query": [
+                { "key": "page", "value": "1" },
+                { "key": "pageSize", "value": "10" },
+                { "key": "status", "value": "" },
+                { "key": "salesmanId", "value": "" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get PM Schedule By ID",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/pm-schedules/1"
+          }
+        },
+        {
+          "name": "Get PM Calendar",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/pm-schedules/calendar?month=3&year=2026",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "pm-schedules", "calendar"],
+              "query": [
+                { "key": "month", "value": "3" },
+                { "key": "year", "value": "2026" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Create PM Schedule",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/api/pm-schedules",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"salesmanId\": 1,\n  \"scheduledDate\": \"2026-03-20\",\n  \"city\": \"Delhi\",\n  \"purpose\": \"Monthly Review\",\n  \"notes\": \"Q1 performance discussion\"\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Expense Policies",
+      "item": [
+        {
+          "name": "Get All Policies",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/expense-policies"
+          }
+        },
+        {
+          "name": "Create Policy",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/api/expense-policies",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"category\": \"Travel\",\n  \"maxAmount\": 1000,\n  \"requiresReceipt\": true,\n  \"description\": \"Daily travel limit\"\n}"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

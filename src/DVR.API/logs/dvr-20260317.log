@@ -1,0 +1,177 @@
+2026-03-17 10:14:11.061 +05:30 [INF] Start installing Hangfire SQL objects...
+2026-03-17 10:14:11.294 +05:30 [INF] Hangfire SQL objects installed.
+2026-03-17 10:14:11.829 +05:30 [INF] Starting Hangfire Server using job storage: 'SQL Server: DESKTOP-DN1P5P3\SQLEXPRESS01@GoodLuckDVR'
+2026-03-17 10:14:11.831 +05:30 [INF] Using the following options for SQL Server job storage: Queue poll interval: 00:00:00.
+2026-03-17 10:14:11.832 +05:30 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2026-03-17 10:14:11.867 +05:30 [INF] Server desktop-dn1p5p3:34148:4f5272d4 successfully announced in 15.8387 ms
+2026-03-17 10:14:11.872 +05:30 [INF] Server desktop-dn1p5p3:34148:4f5272d4 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, SqlServerHeartbeatProcess, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2026-03-17 10:14:11.882 +05:30 [INF] 1 servers were removed due to timeout
+2026-03-17 10:14:11.889 +05:30 [INF] Server desktop-dn1p5p3:34148:4f5272d4 all the dispatchers started
+2026-03-17 10:17:49.160 +05:30 [INF] Server desktop-dn1p5p3:34148:4f5272d4 caught stopping signal...
+2026-03-17 10:17:49.165 +05:30 [INF] Server desktop-dn1p5p3:34148:4f5272d4 All dispatchers stopped
+2026-03-17 10:17:49.172 +05:30 [INF] Server desktop-dn1p5p3:34148:4f5272d4 successfully reported itself as stopped in 3.798 ms
+2026-03-17 10:17:49.173 +05:30 [INF] Server desktop-dn1p5p3:34148:4f5272d4 has been stopped in total 11.3207 ms
+2026-03-17 10:17:57.418 +05:30 [INF] Start installing Hangfire SQL objects...
+2026-03-17 10:17:57.656 +05:30 [INF] Hangfire SQL objects installed.
+2026-03-17 10:17:58.127 +05:30 [INF] Starting Hangfire Server using job storage: 'SQL Server: DESKTOP-DN1P5P3\SQLEXPRESS01@GoodLuckDVR'
+2026-03-17 10:17:58.128 +05:30 [INF] Using the following options for SQL Server job storage: Queue poll interval: 00:00:00.
+2026-03-17 10:17:58.129 +05:30 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2026-03-17 10:17:58.180 +05:30 [INF] Server desktop-dn1p5p3:27204:af893fd1 successfully announced in 27.5418 ms
+2026-03-17 10:17:58.184 +05:30 [INF] Server desktop-dn1p5p3:27204:af893fd1 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, SqlServerHeartbeatProcess, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2026-03-17 10:17:58.202 +05:30 [INF] Server desktop-dn1p5p3:27204:af893fd1 all the dispatchers started
+2026-03-17 10:20:42.015 +05:30 [INF] Server desktop-dn1p5p3:27204:af893fd1 caught stopping signal...
+2026-03-17 10:20:42.020 +05:30 [INF] Server desktop-dn1p5p3:27204:af893fd1 All dispatchers stopped
+2026-03-17 10:20:42.034 +05:30 [INF] Server desktop-dn1p5p3:27204:af893fd1 successfully reported itself as stopped in 9.9554 ms
+2026-03-17 10:20:42.035 +05:30 [INF] Server desktop-dn1p5p3:27204:af893fd1 has been stopped in total 17.7659 ms
+2026-03-17 10:20:49.159 +05:30 [INF] Start installing Hangfire SQL objects...
+2026-03-17 10:20:49.379 +05:30 [INF] Hangfire SQL objects installed.
+2026-03-17 10:20:49.831 +05:30 [INF] Starting Hangfire Server using job storage: 'SQL Server: DESKTOP-DN1P5P3\SQLEXPRESS01@GoodLuckDVR'
+2026-03-17 10:20:49.832 +05:30 [INF] Using the following options for SQL Server job storage: Queue poll interval: 00:00:00.
+2026-03-17 10:20:49.833 +05:30 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2026-03-17 10:20:49.871 +05:30 [INF] Server desktop-dn1p5p3:1872:4a8cf50d successfully announced in 17.8862 ms
+2026-03-17 10:20:49.875 +05:30 [INF] Server desktop-dn1p5p3:1872:4a8cf50d is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, SqlServerHeartbeatProcess, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2026-03-17 10:20:49.889 +05:30 [INF] Server desktop-dn1p5p3:1872:4a8cf50d all the dispatchers started
+2026-03-17 10:22:31.478 +05:30 [INF] Server desktop-dn1p5p3:1872:4a8cf50d caught stopping signal...
+2026-03-17 10:22:31.482 +05:30 [INF] Server desktop-dn1p5p3:1872:4a8cf50d All dispatchers stopped
+2026-03-17 10:22:31.492 +05:30 [INF] Server desktop-dn1p5p3:1872:4a8cf50d successfully reported itself as stopped in 6.7329 ms
+2026-03-17 10:22:31.493 +05:30 [INF] Server desktop-dn1p5p3:1872:4a8cf50d has been stopped in total 12.6264 ms
+2026-03-17 10:22:38.188 +05:30 [INF] Start installing Hangfire SQL objects...
+2026-03-17 10:22:38.427 +05:30 [INF] Hangfire SQL objects installed.
+2026-03-17 10:22:38.928 +05:30 [INF] Starting Hangfire Server using job storage: 'SQL Server: DESKTOP-DN1P5P3\SQLEXPRESS01@GoodLuckDVR'
+2026-03-17 10:22:38.930 +05:30 [INF] Using the following options for SQL Server job storage: Queue poll interval: 00:00:00.
+2026-03-17 10:22:38.930 +05:30 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2026-03-17 10:22:38.965 +05:30 [INF] Server desktop-dn1p5p3:9696:6c98c76b successfully announced in 16.0055 ms
+2026-03-17 10:22:38.970 +05:30 [INF] Server desktop-dn1p5p3:9696:6c98c76b is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, SqlServerHeartbeatProcess, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2026-03-17 10:22:38.984 +05:30 [INF] Server desktop-dn1p5p3:9696:6c98c76b all the dispatchers started
+2026-03-17 10:29:49.844 +05:30 [INF] Server desktop-dn1p5p3:9696:6c98c76b caught stopping signal...
+2026-03-17 10:29:49.852 +05:30 [INF] Server desktop-dn1p5p3:9696:6c98c76b All dispatchers stopped
+2026-03-17 10:29:49.880 +05:30 [INF] Server desktop-dn1p5p3:9696:6c98c76b successfully reported itself as stopped in 15.5809 ms
+2026-03-17 10:29:49.881 +05:30 [INF] Server desktop-dn1p5p3:9696:6c98c76b has been stopped in total 35.3453 ms
+2026-03-17 10:29:56.971 +05:30 [INF] Start installing Hangfire SQL objects...
+2026-03-17 10:29:57.251 +05:30 [INF] Hangfire SQL objects installed.
+2026-03-17 10:29:57.794 +05:30 [INF] Starting Hangfire Server using job storage: 'SQL Server: DESKTOP-DN1P5P3\SQLEXPRESS01@GoodLuckDVR'
+2026-03-17 10:29:57.795 +05:30 [INF] Using the following options for SQL Server job storage: Queue poll interval: 00:00:00.
+2026-03-17 10:29:57.796 +05:30 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2026-03-17 10:29:57.828 +05:30 [INF] Server desktop-dn1p5p3:9916:5af825ca successfully announced in 17.6371 ms
+2026-03-17 10:29:57.833 +05:30 [INF] Server desktop-dn1p5p3:9916:5af825ca is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, SqlServerHeartbeatProcess, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2026-03-17 10:29:57.845 +05:30 [INF] Server desktop-dn1p5p3:9916:5af825ca all the dispatchers started
+2026-03-17 10:33:07.937 +05:30 [INF] [7d939099] POST /api/auth/login started
+2026-03-17 10:33:07.990 +05:30 [WRN] Failed to determine the https port for redirect.
+2026-03-17 10:33:10.624 +05:30 [INF] [7d939099] POST /api/auth/login responded 401 in 2694ms
+2026-03-17 10:35:02.702 +05:30 [INF] Server desktop-dn1p5p3:9916:5af825ca caught stopping signal...
+2026-03-17 10:35:02.722 +05:30 [INF] Server desktop-dn1p5p3:9916:5af825ca All dispatchers stopped
+2026-03-17 10:35:02.737 +05:30 [INF] Server desktop-dn1p5p3:9916:5af825ca successfully reported itself as stopped in 8.289 ms
+2026-03-17 10:35:02.738 +05:30 [INF] Server desktop-dn1p5p3:9916:5af825ca has been stopped in total 29.2163 ms
+2026-03-17 10:35:18.280 +05:30 [INF] Start installing Hangfire SQL objects...
+2026-03-17 10:35:18.723 +05:30 [INF] Hangfire SQL objects installed.
+2026-03-17 10:35:19.683 +05:30 [INF] Starting Hangfire Server using job storage: 'SQL Server: DESKTOP-DN1P5P3\SQLEXPRESS01@GoodLuckDVR'
+2026-03-17 10:35:19.684 +05:30 [INF] Using the following options for SQL Server job storage: Queue poll interval: 00:00:00.
+2026-03-17 10:35:19.686 +05:30 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2026-03-17 10:35:19.742 +05:30 [INF] Server desktop-dn1p5p3:23952:4c32d8b8 successfully announced in 26.1311 ms
+2026-03-17 10:35:19.749 +05:30 [INF] Server desktop-dn1p5p3:23952:4c32d8b8 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, SqlServerHeartbeatProcess, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2026-03-17 10:35:19.764 +05:30 [INF] Server desktop-dn1p5p3:23952:4c32d8b8 all the dispatchers started
+2026-03-17 10:35:27.031 +05:30 [INF] [b0d94d74] OPTIONS /api/auth/login started
+2026-03-17 10:35:27.070 +05:30 [WRN] Failed to determine the https port for redirect.
+2026-03-17 10:35:27.077 +05:30 [INF] [b0d94d74] OPTIONS /api/auth/login responded 204 in 53ms
+2026-03-17 10:35:27.105 +05:30 [INF] [18eed256] POST /api/auth/login started
+2026-03-17 10:35:27.517 +05:30 [INF] [18eed256] POST /api/auth/login responded 200 in 411ms
+2026-03-17 10:35:32.963 +05:30 [INF] [c3f39d84] OPTIONS /api/notifications started
+2026-03-17 10:35:32.967 +05:30 [INF] [144bc9c2] OPTIONS /api/notifications started
+2026-03-17 10:35:32.970 +05:30 [INF] [c3f39d84] OPTIONS /api/notifications responded 204 in 7ms
+2026-03-17 10:35:32.971 +05:30 [INF] [144bc9c2] OPTIONS /api/notifications responded 204 in 4ms
+2026-03-17 10:35:32.977 +05:30 [INF] [9df80e88] GET /api/notifications started
+2026-03-17 10:35:33.015 +05:30 [INF] [f9292f80] OPTIONS /api/salesmen started
+2026-03-17 10:35:33.018 +05:30 [INF] [f9292f80] OPTIONS /api/salesmen responded 204 in 2ms
+2026-03-17 10:35:33.018 +05:30 [INF] [4a6db433] OPTIONS /api/feedback started
+2026-03-17 10:35:33.018 +05:30 [INF] [f08bca22] OPTIONS /api/tada started
+2026-03-17 10:35:33.021 +05:30 [INF] [d00b61f6] OPTIONS /api/schools started
+2026-03-17 10:35:33.021 +05:30 [INF] [00fa2184] OPTIONS /api/visits started
+2026-03-17 10:35:33.024 +05:30 [INF] [962b6162] OPTIONS /api/salesmen started
+2026-03-17 10:35:33.025 +05:30 [INF] [4a6db433] OPTIONS /api/feedback responded 204 in 6ms
+2026-03-17 10:35:33.027 +05:30 [INF] [f08bca22] OPTIONS /api/tada responded 204 in 9ms
+2026-03-17 10:35:33.029 +05:30 [INF] [d00b61f6] OPTIONS /api/schools responded 204 in 8ms
+2026-03-17 10:35:33.031 +05:30 [INF] [00fa2184] OPTIONS /api/visits responded 204 in 9ms
+2026-03-17 10:35:33.033 +05:30 [INF] [962b6162] OPTIONS /api/salesmen responded 204 in 9ms
+2026-03-17 10:35:33.038 +05:30 [INF] [a5e0b060] OPTIONS /api/tada started
+2026-03-17 10:35:33.041 +05:30 [INF] [c326a9a8] OPTIONS /api/feedback started
+2026-03-17 10:35:33.044 +05:30 [INF] [88209863] OPTIONS /api/schools started
+2026-03-17 10:35:33.046 +05:30 [INF] [b47ba88f] GET /api/salesmen started
+2026-03-17 10:35:33.049 +05:30 [INF] [796667ff] OPTIONS /api/visits started
+2026-03-17 10:35:33.050 +05:30 [INF] [a5e0b060] OPTIONS /api/tada responded 204 in 12ms
+2026-03-17 10:35:33.053 +05:30 [INF] [c326a9a8] OPTIONS /api/feedback responded 204 in 11ms
+2026-03-17 10:35:33.055 +05:30 [INF] [88209863] OPTIONS /api/schools responded 204 in 11ms
+2026-03-17 10:35:33.059 +05:30 [INF] [796667ff] OPTIONS /api/visits responded 204 in 10ms
+2026-03-17 10:35:33.063 +05:30 [INF] [edd0063e] GET /api/feedback started
+2026-03-17 10:35:33.066 +05:30 [INF] [f5b7c5a3] GET /api/tada started
+2026-03-17 10:35:33.068 +05:30 [INF] [bd34fab9] GET /api/schools started
+2026-03-17 10:35:33.072 +05:30 [INF] [50a9e216] GET /api/visits started
+2026-03-17 10:35:33.192 +05:30 [INF] [edd0063e] GET /api/feedback responded 200 in 129ms
+2026-03-17 10:35:33.192 +05:30 [INF] [f5b7c5a3] GET /api/tada responded 200 in 126ms
+2026-03-17 10:35:33.192 +05:30 [INF] [50a9e216] GET /api/visits responded 200 in 120ms
+2026-03-17 10:35:33.197 +05:30 [INF] [d3b583b9] GET /api/feedback started
+2026-03-17 10:35:33.200 +05:30 [INF] [ee7082a9] GET /api/tada started
+2026-03-17 10:35:33.204 +05:30 [INF] [ba0e12f0] GET /api/visits started
+2026-03-17 10:35:33.207 +05:30 [INF] [9df80e88] GET /api/notifications responded 200 in 229ms
+2026-03-17 10:35:33.211 +05:30 [INF] [ee7082a9] GET /api/tada responded 200 in 11ms
+2026-03-17 10:35:33.211 +05:30 [INF] [b47ba88f] GET /api/salesmen responded 200 in 165ms
+2026-03-17 10:35:33.211 +05:30 [INF] [d3b583b9] GET /api/feedback responded 200 in 14ms
+2026-03-17 10:35:33.213 +05:30 [INF] [ba0e12f0] GET /api/visits responded 200 in 9ms
+2026-03-17 10:35:33.215 +05:30 [INF] [c3c95ef1] GET /api/notifications started
+2026-03-17 10:35:33.217 +05:30 [INF] [f3fb3bf3] GET /api/salesmen started
+2026-03-17 10:35:33.233 +05:30 [INF] [c3c95ef1] GET /api/notifications responded 200 in 18ms
+2026-03-17 10:35:33.234 +05:30 [INF] [f3fb3bf3] GET /api/salesmen responded 200 in 16ms
+2026-03-17 10:35:33.238 +05:30 [INF] [bd34fab9] GET /api/schools responded 200 in 169ms
+2026-03-17 10:35:33.239 +05:30 [INF] [70f65a8a] GET /api/schools started
+2026-03-17 10:35:33.250 +05:30 [INF] [70f65a8a] GET /api/schools responded 200 in 10ms
+2026-03-17 10:39:13.423 +05:30 [INF] [77000a75] OPTIONS /api/approvals/pending started
+2026-03-17 10:39:13.423 +05:30 [INF] [0a1d9e68] OPTIONS /api/approvals/pending started
+2026-03-17 10:39:13.426 +05:30 [INF] [77000a75] OPTIONS /api/approvals/pending responded 204 in 3ms
+2026-03-17 10:39:13.429 +05:30 [INF] [0a1d9e68] OPTIONS /api/approvals/pending responded 204 in 5ms
+2026-03-17 10:39:13.436 +05:30 [INF] [ee2fa36a] GET /api/approvals/pending started
+2026-03-17 10:39:13.481 +05:30 [INF] [ee2fa36a] GET /api/approvals/pending responded 200 in 44ms
+2026-03-17 10:39:13.484 +05:30 [INF] [b29299a7] GET /api/approvals/pending started
+2026-03-17 10:39:13.490 +05:30 [INF] [b29299a7] GET /api/approvals/pending responded 200 in 6ms
+2026-03-17 10:40:13.043 +05:30 [INF] Server desktop-dn1p5p3:23952:4c32d8b8 caught stopping signal...
+2026-03-17 10:40:13.056 +05:30 [INF] Server desktop-dn1p5p3:23952:4c32d8b8 All dispatchers stopped
+2026-03-17 10:40:13.068 +05:30 [INF] Server desktop-dn1p5p3:23952:4c32d8b8 successfully reported itself as stopped in 6.3214 ms
+2026-03-17 10:40:13.069 +05:30 [INF] Server desktop-dn1p5p3:23952:4c32d8b8 has been stopped in total 22.3997 ms
+2026-03-17 10:40:21.987 +05:30 [INF] Start installing Hangfire SQL objects...
+2026-03-17 10:40:22.361 +05:30 [INF] Hangfire SQL objects installed.
+2026-03-17 10:40:23.109 +05:30 [INF] Starting Hangfire Server using job storage: 'SQL Server: DESKTOP-DN1P5P3\SQLEXPRESS01@GoodLuckDVR'
+2026-03-17 10:40:23.110 +05:30 [INF] Using the following options for SQL Server job storage: Queue poll interval: 00:00:00.
+2026-03-17 10:40:23.111 +05:30 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2026-03-17 10:40:23.166 +05:30 [INF] Server desktop-dn1p5p3:32724:16c9a9b1 successfully announced in 27.6932 ms
+2026-03-17 10:40:23.173 +05:30 [INF] Server desktop-dn1p5p3:32724:16c9a9b1 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, SqlServerHeartbeatProcess, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2026-03-17 10:40:23.204 +05:30 [INF] Server desktop-dn1p5p3:32724:16c9a9b1 all the dispatchers started
+2026-03-17 10:42:31.549 +05:30 [INF] Server desktop-dn1p5p3:32724:16c9a9b1 caught stopping signal...
+2026-03-17 10:42:31.567 +05:30 [INF] Server desktop-dn1p5p3:32724:16c9a9b1 All dispatchers stopped
+2026-03-17 10:42:31.580 +05:30 [INF] Server desktop-dn1p5p3:32724:16c9a9b1 successfully reported itself as stopped in 6.4942 ms
+2026-03-17 10:42:31.581 +05:30 [INF] Server desktop-dn1p5p3:32724:16c9a9b1 has been stopped in total 26.9781 ms

@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "zORl1LjgECk=",
+  "success": true,
+  "projectFilePath": "D:\\goodluck-frontend-master\\goodluck-backend\\HashGen\\HashGen.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Hp\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

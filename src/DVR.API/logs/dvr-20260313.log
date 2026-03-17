@@ -1,0 +1,61 @@
+2026-03-13 17:43:09.333 +05:30 [FTL] Database migration failed
+System.InvalidOperationException: Variable 2a has no value defined
+   at DbUp.Engine.Preprocessors.VariableSubstitutionSqlParser.<>c__DisplayClass3_0.<ReplaceVariables>b__1(String name) in /_/src/dbup-core/Engine/Preprocessors/VariableSubstitutionSqlParser.cs:line 51
+   at DbUp.Engine.Preprocessors.VariableSubstitutionSqlParser.ReadCustomStatement() in /_/src/dbup-core/Engine/Preprocessors/VariableSubstitutionSqlParser.cs:line 100
+   at DbUp.Support.SqlParser.Parse() in /_/src/dbup-core/Support/SqlParser.cs:line 71
+   at DbUp.Engine.Preprocessors.VariableSubstitutionSqlParser.ReplaceVariables(IDictionary`2 variables) in /_/src/dbup-core/Engine/Preprocessors/VariableSubstitutionSqlParser.cs:line 57
+   at DbUp.Engine.Preprocessors.VariableSubstitutionPreprocessor.Process(String contents) in /_/src/dbup-core/Engine/Preprocessors/VariableSubstitutionPreprocessor.cs:line 30
+   at DbUp.Support.ScriptExecutor.PreprocessScriptContents(SqlScript script, IDictionary`2 variables) in /_/src/dbup-core/Support/ScriptExecutor.cs:line 103
+   at DbUp.Support.ScriptExecutor.Execute(SqlScript script, IDictionary`2 variables) in /_/src/dbup-core/Support/ScriptExecutor.cs:line 117
+   at DbUp.Engine.UpgradeEngine.PerformUpgrade() in /_/src/dbup-core/Engine/UpgradeEngine.cs:line 84
+2026-03-13 17:47:56.899 +05:30 [FTL] Database migration failed
+System.InvalidOperationException: Variable 2a has no value defined
+   at DbUp.Engine.Preprocessors.VariableSubstitutionSqlParser.<>c__DisplayClass3_0.<ReplaceVariables>b__1(String name) in /_/src/dbup-core/Engine/Preprocessors/VariableSubstitutionSqlParser.cs:line 51
+   at DbUp.Engine.Preprocessors.VariableSubstitutionSqlParser.ReadCustomStatement() in /_/src/dbup-core/Engine/Preprocessors/VariableSubstitutionSqlParser.cs:line 100
+   at DbUp.Support.SqlParser.Parse() in /_/src/dbup-core/Support/SqlParser.cs:line 71
+   at DbUp.Engine.Preprocessors.VariableSubstitutionSqlParser.ReplaceVariables(IDictionary`2 variables) in /_/src/dbup-core/Engine/Preprocessors/VariableSubstitutionSqlParser.cs:line 57
+   at DbUp.Engine.Preprocessors.VariableSubstitutionPreprocessor.Process(String contents) in /_/src/dbup-core/Engine/Preprocessors/VariableSubstitutionPreprocessor.cs:line 30
+   at DbUp.Support.ScriptExecutor.PreprocessScriptContents(SqlScript script, IDictionary`2 variables) in /_/src/dbup-core/Support/ScriptExecutor.cs:line 103
+   at DbUp.Support.ScriptExecutor.Execute(SqlScript script, IDictionary`2 variables) in /_/src/dbup-core/Support/ScriptExecutor.cs:line 117
+   at DbUp.Engine.UpgradeEngine.PerformUpgrade() in /_/src/dbup-core/Engine/UpgradeEngine.cs:line 84
+2026-03-13 17:50:02.196 +05:30 [INF] Start installing Hangfire SQL objects...
+2026-03-13 17:50:02.480 +05:30 [INF] Hangfire SQL objects installed.
+2026-03-13 17:50:02.968 +05:30 [INF] Starting Hangfire Server using job storage: 'SQL Server: localhost@GoodLuckDVR'
+2026-03-13 17:50:02.969 +05:30 [INF] Using the following options for SQL Server job storage: Queue poll interval: 00:00:00.
+2026-03-13 17:50:02.969 +05:30 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2026-03-13 17:50:02.999 +05:30 [INF] Server desktop-dn1p5p3:6724:ec9c1749 successfully announced in 14.2366 ms
+2026-03-13 17:50:03.004 +05:30 [INF] Server desktop-dn1p5p3:6724:ec9c1749 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, SqlServerHeartbeatProcess, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2026-03-13 17:50:03.013 +05:30 [INF] Server desktop-dn1p5p3:6724:ec9c1749 all the dispatchers started
+2026-03-13 17:53:12.708 +05:30 [INF] Server desktop-dn1p5p3:6724:ec9c1749 caught stopping signal...
+2026-03-13 17:53:12.718 +05:30 [INF] Server desktop-dn1p5p3:6724:ec9c1749 All dispatchers stopped
+2026-03-13 17:53:12.732 +05:30 [INF] Server desktop-dn1p5p3:6724:ec9c1749 successfully reported itself as stopped in 5.795 ms
+2026-03-13 17:53:12.734 +05:30 [INF] Server desktop-dn1p5p3:6724:ec9c1749 has been stopped in total 22.1388 ms
+2026-03-13 17:53:21.991 +05:30 [INF] Start installing Hangfire SQL objects...
+2026-03-13 17:53:22.344 +05:30 [INF] Hangfire SQL objects installed.
+2026-03-13 17:53:22.846 +05:30 [INF] Starting Hangfire Server using job storage: 'SQL Server: DESKTOP-DN1P5P3\SQLEXPRESS01@GoodLuckDVR'
+2026-03-13 17:53:22.847 +05:30 [INF] Using the following options for SQL Server job storage: Queue poll interval: 00:00:00.
+2026-03-13 17:53:22.848 +05:30 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2026-03-13 17:53:22.884 +05:30 [INF] Server desktop-dn1p5p3:21884:5b66f9fa successfully announced in 19.9582 ms
+2026-03-13 17:53:22.889 +05:30 [INF] Server desktop-dn1p5p3:21884:5b66f9fa is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, SqlServerHeartbeatProcess, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2026-03-13 17:53:22.900 +05:30 [INF] Server desktop-dn1p5p3:21884:5b66f9fa all the dispatchers started
+2026-03-13 18:09:20.991 +05:30 [INF] [6ec39361] POST /api/auth/login started
+2026-03-13 18:09:21.026 +05:30 [WRN] Failed to determine the https port for redirect.
+2026-03-13 18:09:22.017 +05:30 [INF] [6ec39361] POST /api/auth/login responded 401 in 1031ms
+2026-03-13 18:10:03.599 +05:30 [INF] [f73fefe1] GET /api/auth/me started
+2026-03-13 18:10:03.617 +05:30 [INF] [f73fefe1] GET /api/auth/me responded 401 in 17ms
+2026-03-13 18:48:22.604 +05:30 [INF] [30bbf87e] POST /api/auth/login started
+2026-03-13 18:48:22.987 +05:30 [INF] [30bbf87e] POST /api/auth/login responded 401 in 382ms
+2026-03-13 18:48:30.943 +05:30 [INF] [31788ecd] POST /api/auth/login started
+2026-03-13 18:48:31.157 +05:30 [INF] [31788ecd] POST /api/auth/login responded 401 in 214ms
+2026-03-13 18:59:43.350 +05:30 [INF] Server desktop-dn1p5p3:21884:5b66f9fa caught stopping signal...
+2026-03-13 18:59:43.358 +05:30 [INF] Server desktop-dn1p5p3:21884:5b66f9fa All dispatchers stopped
+2026-03-13 18:59:43.367 +05:30 [INF] Server desktop-dn1p5p3:21884:5b66f9fa successfully reported itself as stopped in 5.394 ms
+2026-03-13 18:59:43.368 +05:30 [INF] Server desktop-dn1p5p3:21884:5b66f9fa has been stopped in total 16.231 ms
