@@ -102,7 +102,10 @@ public class TourPlansController : ControllerBase
             "UPDATE TourPlans SET Status = 'Submitted', UpdatedAt = GETUTCDATE() WHERE TourPlanId = @id AND Status = 'Draft'", new { id });
 
         if (rows > 0)
-            await _notifications.SendToRoleAsync("Manager", "Tour Plan Submitted", $"A tour plan #{id} has been submitted for approval.", "TourPlan");
+        {
+            await _notifications.SendToRoleAsync("Manager", "Tour Plan Submitted", $"Tour plan #{id} has been submitted for approval.", "tour_plan", "/admin/approvals?tab=tourplans");
+            await _notifications.SendToRoleAsync("Admin", "Tour Plan Submitted", $"Tour plan #{id} has been submitted for approval.", "tour_plan", "/admin/approvals?tab=tourplans");
+        }
 
         return rows > 0 ? Ok(ApiResponse.Ok("Tour plan submitted for approval.")) : NotFound(ApiResponse.Fail("Tour plan not found or already submitted."));
     }
@@ -121,7 +124,7 @@ public class TourPlansController : ControllerBase
 
         var salesmanUserId = await conn.QueryFirstOrDefaultAsync<int?>("SELECT UserId FROM Salesmen WHERE SalesmanId = @SalesmanId", new { tp.SalesmanId });
         if (salesmanUserId.HasValue)
-            await _notifications.SendToUserAsync(salesmanUserId.Value, "Tour Plan Approved", $"Your tour plan #{id} has been approved.");
+            await _notifications.SendToUserAsync(salesmanUserId.Value, "Tour Plan Approved", $"Your tour plan #{id} has been approved. You can start your visits!", "tour_plan", actionUrl: "/salesman/tour-plans");
 
         return Ok(ApiResponse.Ok("Tour plan approved."));
     }
@@ -141,7 +144,7 @@ public class TourPlansController : ControllerBase
 
         var salesmanUserId = await conn.QueryFirstOrDefaultAsync<int?>("SELECT UserId FROM Salesmen WHERE SalesmanId = @SalesmanId", new { tp.SalesmanId });
         if (salesmanUserId.HasValue)
-            await _notifications.SendToUserAsync(salesmanUserId.Value, "Tour Plan Rejected", $"Your tour plan #{id} was rejected. Reason: {request.Reason}");
+            await _notifications.SendToUserAsync(salesmanUserId.Value, "Tour Plan Rejected", $"Your tour plan #{id} was rejected. Reason: {request.Reason}", "tour_plan", actionUrl: "/salesman/tour-plans");
 
         return Ok(ApiResponse.Ok("Tour plan rejected."));
     }

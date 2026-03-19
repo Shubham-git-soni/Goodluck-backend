@@ -28,7 +28,18 @@ public static class ServiceExtensions
         services.AddSingleton<IDbConnectionFactory, SqlConnectionFactory>();
         services.AddScoped<IJwtService, JwtService>();
         services.AddScoped<ICurrentUserService, CurrentUserService>();
-        services.AddScoped<INotificationService, NotificationService>();
+
+        // HttpClient for FCM push notifications
+        services.AddHttpClient();
+
+        // Notification services - use decorator pattern for real-time SignalR
+        services.AddScoped<NotificationService>();
+        services.AddScoped<INotificationService>(sp =>
+        {
+            var inner = sp.GetRequiredService<NotificationService>();
+            var hubContext = sp.GetRequiredService<Microsoft.AspNetCore.SignalR.IHubContext<DVR.API.Hubs.NotificationHub>>();
+            return new DVR.API.Services.RealtimeNotificationService(inner, hubContext);
+        });
 
         // Repositories
         services.AddScoped<SchoolRepository>();
