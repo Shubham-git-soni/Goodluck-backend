@@ -17,12 +17,14 @@ public class VisitsController : ControllerBase
     private readonly IMediator _mediator;
     private readonly IDbConnectionFactory _db;
     private readonly ICurrentUserService _currentUser;
+    private readonly INotificationService _notifications;
 
-    public VisitsController(IMediator mediator, IDbConnectionFactory db, ICurrentUserService currentUser)
+    public VisitsController(IMediator mediator, IDbConnectionFactory db, ICurrentUserService currentUser, INotificationService notifications)
     {
         _mediator = mediator;
         _db = db;
         _currentUser = currentUser;
+        _notifications = notifications;
     }
 
     [HttpGet]
@@ -118,6 +120,20 @@ public class VisitsController : ControllerBase
     public async Task<IActionResult> UpdateVisit(int id, [FromBody] UpdateVisitRequest request)
     {
         using var conn = _db.CreateConnection();
+
+        // Get visit details before update
+        var visit = await conn.QueryFirstOrDefaultAsync<dynamic>(@"
+            SELECT v.*, s.SchoolName, b.ShopName, sm.SalesmanId, u.FullName AS SalesmanName
+            FROM Visits v
+            LEFT JOIN Schools s ON v.SchoolId = s.SchoolId
+            LEFT JOIN BookSellers b ON v.BookSellerId = b.BookSellerId
+            JOIN Salesmen sm ON v.SalesmanId = sm.SalesmanId
+            JOIN Users u ON sm.UserId = u.UserId
+            WHERE v.VisitId = @id", new { id });
+
+        if (visit is null)
+            return NotFound(ApiResponse.Fail("Visit not found."));
+
         var rows = await conn.ExecuteAsync(@"
             UPDATE Visits SET
                 Remarks = COALESCE(@Remarks, Remarks),
@@ -129,6 +145,26 @@ public class VisitsController : ControllerBase
                 IsCompleted = COALESCE(@IsCompleted, IsCompleted),
                 UpdatedAt = GETUTCDATE()
             WHERE VisitId = @id", new { request.Remarks, request.Outcome, request.FollowUpDate, request.CheckOutLatitude, request.CheckOutLongitude, request.PhotoUrl, request.IsCompleted, id });
+
+        // Send notification when visit is marked as completed
+        if (rows > 0 && request.IsCompleted == true && visit.IsCompleted == false)
+        {
+            var entityName = visit.SchoolName ?? visit.ShopName ?? "Unknown";
+            var visitType = visit.VisitType == 1 ? "School" : "Bookseller";
+
+            // Notify manager about completed visit
+            var managerId = await conn.QueryFirstOrDefaultAsync<int?>("SELECT ManagerId FROM Salesmen WHERE SalesmanId = @SalesmanId", new { visit.SalesmanId });
+            if (managerId.HasValue)
+            {
+                await _notifications.SendToUserAsync(
+                    managerId.Value,
+                    $"{visitType} Visit Completed",
+                    $"{visit.SalesmanName} completed visit to {entityName}",
+                    "visit",
+                    actionUrl: "/admin/reports/visits"
+                );
+            }
+        }
 
         return rows > 0 ? Ok(ApiResponse.Ok("Visit updated.")) : NotFound(ApiResponse.Fail("Visit not found."));
     }

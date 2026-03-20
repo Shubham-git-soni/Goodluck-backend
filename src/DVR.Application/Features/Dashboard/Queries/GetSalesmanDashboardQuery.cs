@@ -18,6 +18,10 @@ public class SalesmanDashboardDto
     public int PendingTadaClaims { get; set; }
     public decimal ExpensesThisMonth { get; set; }
     public int PresentDaysThisMonth { get; set; }
+    public decimal SalesTarget { get; set; }
+    public decimal SalesAchieved { get; set; }
+    public decimal SpecimenBudget { get; set; }
+    public decimal SpecimenUsed { get; set; }
     public List<RecentVisitDto> RecentVisits { get; set; } = [];
 }
 
@@ -69,6 +73,9 @@ public class GetSalesmanDashboardQueryHandler : IRequestHandler<GetSalesmanDashb
         var presentDays = await conn.QueryFirstOrDefaultAsync<int>(
             "SELECT COUNT(*) FROM Attendance WHERE SalesmanId = @sid AND MONTH(AttendanceDate) = MONTH(GETUTCDATE()) AND YEAR(AttendanceDate) = YEAR(GETUTCDATE()) AND Status = 'Present'", new { sid });
 
+        var salesmanInfo = await conn.QueryFirstOrDefaultAsync<dynamic>(
+            "SELECT SalesTarget, SalesAchieved, SpecimenBudget, SpecimenUsed FROM Salesmen WHERE SalesmanId = @sid", new { sid });
+
         var recentVisits = await conn.QueryAsync<RecentVisitDto>(@"
             SELECT TOP 5 v.VisitId, u.FullName AS SalesmanName,
                 COALESCE(s.SchoolName, b.ShopName) AS TargetName,
@@ -95,6 +102,10 @@ public class GetSalesmanDashboardQueryHandler : IRequestHandler<GetSalesmanDashb
             PendingTadaClaims = pendingTada,
             ExpensesThisMonth = expensesThisMonth,
             PresentDaysThisMonth = presentDays,
+            SalesTarget = salesmanInfo?.SalesTarget ?? 0,
+            SalesAchieved = salesmanInfo?.SalesAchieved ?? 0,
+            SpecimenBudget = salesmanInfo?.SpecimenBudget ?? 0,
+            SpecimenUsed = salesmanInfo?.SpecimenUsed ?? 0,
             RecentVisits = recentVisits.ToList()
         });
     }

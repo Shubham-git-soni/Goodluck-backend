@@ -46,7 +46,7 @@ public class LoginCommandHandler : IRequestHandler<LoginCommand, ApiResponse<Log
         {
             AccessToken = accessToken,
             RefreshToken = refreshToken,
-            AccessTokenExpiry = DateTime.UtcNow.AddMinutes(30),
+            AccessTokenExpiry = DateTime.UtcNow.AddHours(8),
             User = new UserInfo
             {
                 UserId = user.UserId,

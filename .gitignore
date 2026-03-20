@@ -1,2 +1,11 @@
-goodluck-backend\src\DVR.API\bin
-goodluck-frontend-master/ 
+
+# Build output
+**/bin/
+**/obj/
+
+# Logs
+**/logs/
+*.log
+
+# Frontend master folder (if accidentally included)
+goodluck-frontend-master/
