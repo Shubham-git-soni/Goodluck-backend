@@ -13,6 +13,10 @@ public class Salesman
     public string? Designation { get; set; }
     public DateTime? JoiningDate { get; set; }
     public bool IsActive { get; set; } = true;
+    public decimal SalesTarget { get; set; }
+    public decimal SalesAchieved { get; set; }
+    public decimal SpecimenBudget { get; set; }
+    public decimal SpecimenUsed { get; set; }
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
     public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
 }

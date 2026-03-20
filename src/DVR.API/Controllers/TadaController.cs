@@ -84,7 +84,7 @@ public class TadaController : ControllerBase
         var id = await conn.QueryFirstOrDefaultAsync<int>(@"
             INSERT INTO TadaClaims (SalesmanId, ClaimMonth, ClaimYear, TravelAmount, DailyAllowanceAmount, TotalAmount, Status, Remarks, SupportingDocUrl, CreatedAt, UpdatedAt)
             OUTPUT INSERTED.TadaClaimId
-            VALUES (@SalesmanId, @ClaimMonth, @ClaimYear, @TravelAmount, @DailyAllowanceAmount, @TotalAmount, 'Draft', @Remarks, @SupportingDocUrl, GETUTCDATE(), GETUTCDATE())",
+            VALUES (@SalesmanId, @ClaimMonth, @ClaimYear, @TravelAmount, @DailyAllowanceAmount, @TotalAmount, 'Pending', @Remarks, @SupportingDocUrl, GETUTCDATE(), GETUTCDATE())",
             new { SalesmanId = salesmanId.Value, request.ClaimMonth, request.ClaimYear, request.TravelAmount, request.DailyAllowanceAmount, TotalAmount = total, request.Remarks, request.SupportingDocUrl });
 
         return Created($"/api/tada/{id}", ApiResponse<object>.Ok(new { TadaClaimId = id }, "TADA claim created."));
@@ -95,10 +95,14 @@ public class TadaController : ControllerBase
     {
         using var conn = _db.CreateConnection();
         var rows = await conn.ExecuteAsync(
-            "UPDATE TadaClaims SET Status = 'Submitted', UpdatedAt = GETUTCDATE() WHERE TadaClaimId = @id AND Status = 'Draft'", new { id });
+            "UPDATE TadaClaims SET Status = 'Submitted', UpdatedAt = GETUTCDATE() WHERE TadaClaimId = @id AND Status = 'Pending'", new { id });
 
         if (rows > 0)
-            await _notifications.SendToRoleAsync("Manager", "TADA Claim Submitted", $"TADA claim #{id} has been submitted for approval.", "TadaClaim");
+        {
+            // Send to both Admin and Manager roles with actionUrl pointing to approvals page
+            await _notifications.SendToRoleAsync("Manager", "TADA Claim Submitted", $"TADA claim #{id} has been submitted for approval.", "tada", "/admin/approvals?tab=tada");
+            await _notifications.SendToRoleAsync("Admin", "TADA Claim Submitted", $"TADA claim #{id} has been submitted for approval.", "tada", "/admin/approvals?tab=tada");
+        }
 
         return rows > 0 ? Ok(ApiResponse.Ok("TADA claim submitted.")) : NotFound(ApiResponse.Fail("Claim not found."));
     }
@@ -117,7 +121,7 @@ public class TadaController : ControllerBase
 
         var userId = await conn.QueryFirstOrDefaultAsync<int?>("SELECT UserId FROM Salesmen WHERE SalesmanId = @SalesmanId", new { claim.SalesmanId });
         if (userId.HasValue)
-            await _notifications.SendToUserAsync(userId.Value, "TADA Claim Approved", $"Your TADA claim #{id} (₹{claim.TotalAmount}) has been approved.");
+            await _notifications.SendToUserAsync(userId.Value, "TADA Claim Approved", $"Your TADA claim #{id} (₹{claim.TotalAmount}) has been approved.", "tada", actionUrl: "/salesman/tada");
 
         return Ok(ApiResponse.Ok("TADA claim approved."));
     }
@@ -127,10 +131,17 @@ public class TadaController : ControllerBase
     public async Task<IActionResult> RejectClaim(int id, [FromBody] ApproveRejectRequest request)
     {
         using var conn = _db.CreateConnection();
+        var claim = await conn.QueryFirstOrDefaultAsync<DVR.Domain.Entities.TadaClaim>("SELECT * FROM TadaClaims WHERE TadaClaimId = @id", new { id });
+        if (claim is null) return NotFound(ApiResponse.Fail("Claim not found."));
+
         await conn.ExecuteAsync(@"
             UPDATE TadaClaims SET Status = 'Rejected', ApprovedById = @ApprovedById, ApprovedAt = GETUTCDATE(),
                 RejectionReason = @Reason, UpdatedAt = GETUTCDATE()
             WHERE TadaClaimId = @id", new { ApprovedById = _currentUser.UserId, request.Reason, id });
+
+        var userId = await conn.QueryFirstOrDefaultAsync<int?>("SELECT UserId FROM Salesmen WHERE SalesmanId = @SalesmanId", new { claim.SalesmanId });
+        if (userId.HasValue)
+            await _notifications.SendToUserAsync(userId.Value, "TADA Claim Rejected", $"Your TADA claim #{id} (₹{claim.TotalAmount}) has been rejected. Reason: {request.Reason}", "tada", actionUrl: "/salesman/tada");
 
         return Ok(ApiResponse.Ok("TADA claim rejected."));
     }
