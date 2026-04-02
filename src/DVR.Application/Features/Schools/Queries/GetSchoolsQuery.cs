@@ -55,10 +55,8 @@ public class GetSchoolsQueryHandler : IRequestHandler<GetSchoolsQuery, Paginated
 
         if (_currentUser.IsSalesman)
         {
-            where.Add("s.AssignedSalesmanId = @CurrentSalesmanId");
-            var salesmanId = await conn.QueryFirstOrDefaultAsync<int?>(
-                "SELECT SalesmanId FROM Salesmen WHERE UserId = @UserId", new { _currentUser.UserId });
-            parameters.Add("CurrentSalesmanId", salesmanId);
+            // Salesmen see all active schools (master list for field visits)
+            // AssignedSalesmanId filter is only for analytics/dashboard, not the full list
         }
         else if (_currentUser.IsManager)
         {

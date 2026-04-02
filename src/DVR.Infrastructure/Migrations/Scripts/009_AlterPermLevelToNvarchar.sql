@@ -25,15 +25,8 @@ BEGIN
     -- Step 2: Add new NVARCHAR column
     ALTER TABLE UserModulePermissions ADD PermLevelNew NVARCHAR(20) NOT NULL DEFAULT 'None';
 
-    -- Step 3: Migrate existing int values to string
-    UPDATE UserModulePermissions
-    SET PermLevelNew = CASE PermLevel
-        WHEN 0 THEN 'None'
-        WHEN 1 THEN 'View'
-        WHEN 2 THEN 'User'
-        WHEN 3 THEN 'Admin'
-        ELSE 'None'
-    END;
+    -- Step 3: Migrate existing int values to string (dynamic to avoid parse-time column resolution error)
+    EXEC('UPDATE UserModulePermissions SET PermLevelNew = CASE PermLevel WHEN 0 THEN ''None'' WHEN 1 THEN ''View'' WHEN 2 THEN ''User'' WHEN 3 THEN ''Admin'' ELSE ''None'' END');
 
     -- Step 4: Drop old INT column
     ALTER TABLE UserModulePermissions DROP COLUMN PermLevel;

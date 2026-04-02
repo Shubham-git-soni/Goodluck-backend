@@ -67,13 +67,22 @@ public class AttendanceController : ControllerBase
     {
         using var conn = _db.CreateConnection();
         var salesmanId = await conn.QueryFirstOrDefaultAsync<int?>("SELECT SalesmanId FROM Salesmen WHERE UserId = @UserId", new { _currentUser.UserId });
-        var m = month ?? DateTime.UtcNow.Month;
-        var y = year ?? DateTime.UtcNow.Year;
 
-        var data = await conn.QueryAsync(@"
-            SELECT * FROM Attendance
-            WHERE SalesmanId = @SalesmanId AND MONTH(AttendanceDate) = @m AND YEAR(AttendanceDate) = @y
-            ORDER BY AttendanceDate DESC", new { SalesmanId = salesmanId, m, y });
+        IEnumerable<dynamic> data;
+        if (month.HasValue && year.HasValue)
+        {
+            data = await conn.QueryAsync(@"
+                SELECT * FROM Attendance
+                WHERE SalesmanId = @SalesmanId AND MONTH(AttendanceDate) = @m AND YEAR(AttendanceDate) = @y
+                ORDER BY AttendanceDate DESC", new { SalesmanId = salesmanId, m = month.Value, y = year.Value });
+        }
+        else
+        {
+            data = await conn.QueryAsync(@"
+                SELECT * FROM Attendance
+                WHERE SalesmanId = @SalesmanId
+                ORDER BY AttendanceDate DESC", new { SalesmanId = salesmanId });
+        }
 
         return Ok(ApiResponse<object>.Ok(data));
     }

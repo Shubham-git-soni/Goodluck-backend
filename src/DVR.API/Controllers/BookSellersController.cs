@@ -40,8 +40,7 @@ public class BookSellersController : ControllerBase
 
         if (_currentUser.IsSalesman)
         {
-            var sid = await conn.QueryFirstOrDefaultAsync<int?>("SELECT SalesmanId FROM Salesmen WHERE UserId = @UserId", new { _currentUser.UserId });
-            where.Add("b.AssignedSalesmanId = @SalesmanId"); p.Add("SalesmanId", sid);
+            // Salesmen see all active booksellers (master list for field visits)
         }
         else if (_currentUser.IsManager)
         {

@@ -8,8 +8,12 @@ public class NotificationHub : Hub
 {
     public override async Task OnConnectedAsync()
     {
-        var userId = Context.UserIdentifier;
-        if (userId != null)
+        // UserIdentifier maps to NameIdentifier; also check "sub" claim as fallback
+        var userId = Context.UserIdentifier
+            ?? Context.User?.FindFirst("sub")?.Value
+            ?? Context.User?.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
+
+        if (!string.IsNullOrEmpty(userId))
             await Groups.AddToGroupAsync(Context.ConnectionId, $"user_{userId}");
 
         var role = Context.User?.FindFirst(System.Security.Claims.ClaimTypes.Role)?.Value;
